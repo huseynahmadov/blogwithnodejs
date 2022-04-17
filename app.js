@@ -9,15 +9,18 @@ const {generateDate, limit, truncate, paginate} = require('./helpers/hbs');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override');
+const dotenv = require('dotenv');
 
-mongoose.connect('mongodb://localhost/nodeblog_db');
+const PORT = process.env.MONGO_CONNECT_PORT || 5000;
+dotenv.config();
+mongoose.connect(process.env.MONGO_CONNECT_URL);
 
 
 app.use(session({
     secret: 'testtest',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({mongoUrl: 'mongodb://localhost/nodeblog_db'})
+    store: MongoStore.create({mongoUrl: process.env.MONGO_CONNECT_URL})
 }))
 
 
@@ -82,4 +85,4 @@ app.use('/users', users);
 app.use('/admin', admin);
 app.use('/contact', contact);
 
-app.listen(3000);
+app.listen(PORT);
