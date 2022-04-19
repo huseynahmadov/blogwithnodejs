@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_CONNECT_URL);
 
 
 app.use(session({
-    secret: 'testtest',
+    secret: process.env.SESSION_SECRET_KEY,
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({mongoUrl: process.env.MONGO_CONNECT_URL})
