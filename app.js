@@ -11,7 +11,7 @@ const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override');
 const dotenv = require('dotenv');
 
-const PORT = process.env.MONGO_CONNECT_PORT || 5000;
+const PORT = process.env.PORT || 5000;
 dotenv.config();
 mongoose.connect(process.env.MONGO_CONNECT_URL);
 

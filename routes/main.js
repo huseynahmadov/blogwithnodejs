@@ -39,6 +39,7 @@ router.get('/blog', (req, res) => {
                         }
                     }
             ]).then(categories => {
+                console.log(...categories);
                 res.render('site/blog', {
                     posts: posts,
                     categories: categories,
