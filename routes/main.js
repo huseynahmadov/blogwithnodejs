@@ -5,7 +5,6 @@ const Category = require('../models/Category');
 const User = require('../models/User');
 
 router.get('/', (req, res) => {
-    console.log(req.session);
     res.render('site/index');
 })
 
